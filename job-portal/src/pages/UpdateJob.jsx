@@ -221,7 +221,7 @@ const UpdateJob = () => {
 
         <input
           type="submit"
-          className="block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm"
+          className="block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm cursor-pointer"
         />
       </form>
     </div>
