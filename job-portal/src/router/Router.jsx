@@ -8,6 +8,8 @@ import SalaryPage from '../pages/SalaryPage';
 import CreateJob from '../pages/CreateJob';
 import UpdateJob from '../pages/UpdateJob';
 import JobDetails from '../pages/JobDetails';
+import Login from '../pages/Login';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
   const router = createBrowserRouter([
     {
@@ -20,7 +22,7 @@ import JobDetails from '../pages/JobDetails';
         },
         {
             path: "/my-job",
-            element: <MyJobs/>
+            element: <PrivateRoute><MyJobs/></PrivateRoute>
         },
         {
             path: "/salary",
@@ -41,6 +43,10 @@ import JobDetails from '../pages/JobDetails';
         }
       ]
     },
+    {
+      path: "/login",
+      element: <Login/>
+    }
   ]);
 
   export default router;

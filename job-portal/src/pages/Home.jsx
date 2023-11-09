@@ -33,6 +33,7 @@ const Home = () => {
     (job) => job.jobTitle.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
 
+
   // ----------- Radio Filtering -----------
   const handleChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -68,27 +69,30 @@ const Home = () => {
   const filteredData = (jobs, selected, query) => {
     let filteredJobs = jobs;
     // Filtering Input Items
+
+    console.log(filteredItems)
     if (query) {
       filteredJobs = filteredItems;
     }
 
     // Applying selected filter
     if (selected) {
-      console.log(selected);
+      console.log((selected));
+
       filteredJobs = filteredJobs.filter(
         ({
           jobLocation,
-          maxPrice,
           salaryType,
           experienceLevel,
+          maxPrice,
           postingDate,
           employmentType,
-          createdAt, 
         }) =>
           jobLocation.toLowerCase() === selected.toLowerCase() ||
+          postingDate === selected ||
           parseInt(maxPrice) <= parseInt(selected) ||
           salaryType.toLowerCase() === selected.toLowerCase() ||
-          experienceLevel.toLowerCase() === selected.toLowerCase() ||
+         experienceLevel.toLowerCase() === selected.toLowerCase() ||
           employmentType.toLowerCase() === selected.toLowerCase()
       );
       console.log(filteredJobs);

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const MyJobs = () => {
-  // const { user } = useContext(AuthContext);
-  const email = "moon@moon.com";
+  const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   const [searchText, setSearchText] = useState("");
   // console.log(searchText)
@@ -15,14 +15,14 @@ const MyJobs = () => {
   // console.log(control)
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/myJobs/${email}`)
+    fetch(`http://localhost:5000/myJobs/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setJobs(data);
         setIsLoading(false);
       });
-  }, [searchText]);
+  }, [searchText, user]);
 
   // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;

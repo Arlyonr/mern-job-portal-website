@@ -8,7 +8,7 @@ const SalaryPage = () => {
     fetch("salary.json")
       .then((res) => res.json())
       .then((data) => setSalary(data));
-  }, []);
+  }, [searchText]);
     // search functionality
     const handleSearch = () => {
       const filter = salary.filter(
